@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<p>Calculator</p>
+
+<input class="year" type="text" id="result" disabled>
+
+
+<div class="row">
+  <button class="three" onclick="play('3')">3</button>
+  <button class="two" onclick="play('2')">2</button>
+  <button class="one" onclick="play('1')">1</button>
+  <button class="four" onclick="play('4')">4</button>
+</div>
+<div class="row">
+  <button class="eight" onclick="play('8')">8</button>
+  <button class="seven" onclick="play('7')">7</button>  
+  <button class="six" onclick="play('6')">6</button>
+  <button class="five" onclick="play('5')">5</button>
+</div>
+<div class="row">
+  <button class="nine" onclick="play('9')">9</button>
+  <button class="zero" onclick="play('0')">0</button>
+  <button class="erase" onclick="erase()">C</button>
+  <button class="calculate" onclick="calculate()">=</button>
+</div>
+
+<div class="row">
+  <button class="dash" onclick="play('-')">-</button>
+  <button class="plus" onclick="play('+')">+</button>
+  <button class="divide" onclick="play('/')">/</button>
+  <button class="multiply" onclick="play('*')">*</button>
+  </div>
+  
+</body>
+
+<style>
+  body {
+    background-color: lightblue;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  button {
+    color : red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+  }
+
+  .year {
+    display: flex;
+    width: 180px;
+    padding: 10px;
+    height: 20px;
+    background-color: lightgray;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: black 0px 0px 5px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nine, .eight, .seven, .six, .five, .four, .three, .two, .one, .zero {
+    background-color: lightgreen;
+    color: black;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .erase {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .calculate {
+    background-color: blue;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+
+  .calculate:hover {
+    background-color: darkblue;
+    border-radius: 10%;
+    transition: all 0.2s ease;
+  }
+  .erase:hover {
+    background-color: darkred;
+    border-radius: 10%;
+    transition: all 0.2s ease;
+  }
+
+  .nine:hover, .eight:hover, .seven:hover, .six:hover, .five:hover, .four:hover, .three:hover, .two:hover, .one:hover, .zero:hover {
+    background-color: darkgreen;
+    border-radius: 10%;
+    transition: all 0.2s ease;
+  }
+  .divide, .multiply, .dash, .plus {
+    background-color: orange;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  .divide:hover, .multiply:hover, .dash:hover, .plus:hover {
+    background-color: darkorange;
+    border-radius: 10%;
+    transition: all 0.2s ease;
+  }
+
+
+</style>
+
+<script>
+  let currentInput = '';
+
+  function play(value) {
+    currentInput += value;
+    document.getElementById("result").value = currentInput;
+  }
+
+  function calculate() {
+    try {
+      currentInput = eval(currentInput);
+      document.getElementById('result').value = currentInput;
+    } catch (error) {
+      document.getElementById('result').value = 'Error';
+    }
+
+  }
+  function erase() {
+    currentInput = '';
+    document.getElementById('result').value = currentInput;
+  }
+</script>
+</html>
